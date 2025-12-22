@@ -15,7 +15,6 @@ const roboto = Roboto({
 
 const MainPage = () => {
   const wordList = [
-    "Your next friend is waiting!",
     "Mingle more, scroll less.",
     "Hello World",
     "Mingle. Connect. Laugh."
@@ -26,7 +25,7 @@ const MainPage = () => {
     <>
       <div className='relative flex flex-col h-[100dvh] bg-black'>
         <div className='flex justify-center items-center p-2 shadow-[0_0_5px_white] rounded-b-[10px] bg-gradient-to-b from-gray-800 to-black-950'>
-          <h1 className={`${delius.className} text-4xl font-bold pt-2`}>WELCOME TO <span className={`${delius.className}  glow-text text-5xl`}>MINGLE</span></h1>
+          <h1 className={`${delius.className} text-3xl font-bold pt-2 text-center`}>WELCOME TO <span className={`${delius.className}  glow-text text-4xl`}>MINGLE</span></h1>
         </div>
 
         <div className={`${delius.className} p-10 flex-grow`}>

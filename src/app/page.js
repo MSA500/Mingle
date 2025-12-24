@@ -1,9 +1,11 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Typewriter } from 'react-simple-typewriter';
 import { Pacifico, Delius, Indie_Flower, Roboto } from 'next/font/google'
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 const indie = Indie_Flower({ subset: ['latin'], weight: '400' })
 const pacifico = Pacifico({ subsets: ['latin'], weight: '400' })
@@ -14,11 +16,24 @@ const roboto = Roboto({
 })
 
 const MainPage = () => {
+
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading) {
+      if(!user) 
+        return;
+      else {
+        router.push('/home');
+      }
+    }
+  }, [user, loading, router]);
+
   const wordList = [
     "Mingle more, scroll less.",
     "Hello World",
     "Mingle. Connect. Laugh."
-
   ]
 
   return (

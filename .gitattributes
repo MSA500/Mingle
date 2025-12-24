@@ -1,0 +1,5 @@
+# Treat all JS and CSS files as text and normalize to LF in repo
+*.js text eol=lf
+*.css text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf

@@ -3,12 +3,14 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from
 import { useContext, createContext, useState, useEffect } from "react";
 import { auth } from "@/lib/firebase";
 import { addUser } from "@/lib/firestore";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const route=useRouter()
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -36,6 +38,7 @@ export default function AuthProvider({ children }) {
     const logOut = async () => {
         try {
             await signOut(auth);
+            route.replace('/');
             return;
         }
         catch (err) {

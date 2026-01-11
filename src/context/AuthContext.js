@@ -10,7 +10,7 @@ const AuthContext = createContext();
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const route=useRouter()
+    const route = useRouter()
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -21,13 +21,24 @@ export default function AuthProvider({ children }) {
 
     }, []);
 
-    const login = async () => {
+    const login = async (u, k) => {
         try {
+            const res = await fetch('/api/validity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user: u, key: k })
+            });
+
+            const data = await res.json();
+            if (data.status === "invalid") {
+                return data.status;
+            }
             const provider = new GoogleAuthProvider();
-            const result = await signInWithPopup(auth,provider);
+            const result = await signInWithPopup(auth, provider);
             const userData = result.user;
             await addUser(userData);
-            return result;
+
+            return data.status;
         }
         catch (err) {
             console.error(err);
@@ -55,9 +66,9 @@ export default function AuthProvider({ children }) {
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+    const context = useContext(AuthContext);
+    if (context === undefined) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 }

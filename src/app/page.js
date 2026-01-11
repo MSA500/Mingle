@@ -7,10 +7,10 @@ import { Pacifico, Delius, Indie_Flower, Roboto } from 'next/font/google'
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 
-const indie = Indie_Flower({ subset: ['latin'], weight: '400' })
-const pacifico = Pacifico({ subsets: ['latin'], weight: '400' })
-const delius = Delius({ subsets: ['latin'], weight: '400' })
-const roboto = Roboto({
+export const indie = Indie_Flower({ subset: ['latin'], weight: '400' })
+export const pacifico = Pacifico({ subsets: ['latin'], weight: '400' })
+export const delius = Delius({ subsets: ['latin'], weight: '400' })
+export const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '500', '700']
 })

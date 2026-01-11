@@ -22,9 +22,11 @@ const Home = () => {
 
     if (loading || !user) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <p className="text-lg">Loading...</p>
-            </div>
+            <ProtectedRoute>
+                <div className="flex items-center justify-center min-h-screen">
+                    <p className="text-lg">Loading...</p>
+                </div>
+            </ProtectedRoute>
         );
     }
 
@@ -45,7 +47,8 @@ const Home = () => {
                             const icon = d.email?.[0]?.toUpperCase() ?? "?";
                             const time = d.createdAt ? d.createdAt?.toDate().toLocaleTimeString([], {
                                 hour: '2-digit',
-                                minute: '2-digit'
+                                minute: '2-digit',
+                                hour12:true
                             }) : ""
                             const msgId = d.id
                             return (

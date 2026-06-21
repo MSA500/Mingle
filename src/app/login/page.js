@@ -57,6 +57,11 @@ const LoginPage = () => {
                     <h1 className='text-3xl whitespace-nowrap font-bold text-center mb-4'>Login to<br></br><span className='glow-text'> Start Chating⭐</span></h1>
                     <p className='md:px-10 mb-8'>Mingle is a simple, one-page universal chat app where everyone connects in one shared space.</p>
 
+                    <div className='bg-black py-2 px-4 rounded-2xl border-e-amber-50 border-2'>
+                        <h3>Demo Username : saadpass <br></br>
+                        Demo key : SaadCh@t  
+                        </h3>
+                    </div>
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-col'>
                             <label className={`font-bold ${roboto.className}`}>Username</label>
@@ -89,7 +94,7 @@ const LoginPage = () => {
                             </div>
                         </div>
                     </div>
-
+                    
                     {loading ? <button className=' bg-gray-600/40 p-3 z-3 rounded-lg '>Login...</button> :
                         <button className='bg-red-600 p-2 mt-3 rounded-lg z-3 hover:bg-red-700 active:scale-95' onClick={submit}>Log in With Google</button>
                     }
